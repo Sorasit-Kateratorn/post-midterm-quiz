@@ -129,7 +129,8 @@ my_DB = DB()
 my_DB.insert(table1)
 my_table1 = my_DB.search('movies')
 my_table1_filtered = my_table1.filter(lambda x: x['Genre'] == 'Fantasy')
-print(f"How many Fantasy movies: {len(my_table1_filtered)} ")
+print(f"How many Fantasy movies: {(my_table1_filtered.aggregate(
+    lambda x: len(x), 'Film'))} ")
 
 dict = {}
 dict['Film'] = 'The Shape of Water'
